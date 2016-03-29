@@ -97,8 +97,9 @@ class SurfaceNetMesher:
         buf_no = 1
 
         # Resize buffer if necessary
-        if R[2] * 2 > len(buffer):
-            buffer.extend(zeros_of(R[2] * 2))
+        extend_by = (R[2] * 2) - len(buffer)
+        if extend_by > 0:
+            buffer.extend(zeros_of(extend_by))
 
         # March over the voxel grid
         for x_2 in range(dims[2] - 1):
